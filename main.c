@@ -34,7 +34,7 @@ FILE *f, *f2;
     }
 
 //Заполнение бинарного дерева
-    t = wtime();
+    /*t = wtime();
     struct bstree *tree = bstree_create("k[0]", 0);
     
     for (i = 0; i < n; i++)
@@ -45,11 +45,11 @@ FILE *f, *f2;
     w = getrand(0, n);
 
     time_bin = wtime();
-    struct bstree *temp = bstree_lookup(tree, k[w]);
-    time_bin = wtime() - time_bin;
+    struct bstree *temp = bstree_lookup(tree, k[n-1]);
+    time_bin = wtime() - time_bin;*/
 
 //Заполнение хеш-таблицы
-    struct table *hashtab[n];
+   struct table *hashtab[n];
 
     hashtab_init(hashtab);
 
@@ -61,13 +61,13 @@ FILE *f, *f2;
     w = getrand(0, n);
 
     time_hash = wtime();
-    struct table *temp = hashtab_lookup(hashtab, k[w]);
+    struct table *temp = hashtab_lookup(hashtab, k[n-1]);
     time_hash = wtime() - time_hash;
 
 //Вывод результатов
 printf("%s \n", temp->key);
-    printf("n: %d time: %.6f \n ", n, time_hash);
-    fprintf(f2, "n: %d time: %f \n", n, time_hash);
+    printf("n: %d time: %.6f \n ", n, time_bin);
+    fprintf(f2, "n: %d time: %f \n", n, time_bin);
 
 
 fclose (f);
