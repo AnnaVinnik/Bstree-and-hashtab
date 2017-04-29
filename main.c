@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
 #include "bstree.h"
 #include "hashtab.h"
 #include <locale.h>
 #include <sys/time.h>
+#include "inttypes.h"
 
 int getrand(int min, int max)
 {
@@ -20,6 +23,7 @@ double wtime()
 
 int main()
 {
+uint32_t ex6;
 int i, w, n = 50000;
 double time_bin, time_hash, t;
 char k[n][30], b;
@@ -49,7 +53,7 @@ FILE *f, *f2;
     time_bin = wtime() - time_bin;*/
 
 //Заполнение хеш-таблицы
-   struct table *hashtab[n];
+   /*struct table *hashtab[n];
 
     hashtab_init(hashtab);
 
@@ -67,8 +71,10 @@ FILE *f, *f2;
 //Вывод результатов
 printf("%s \n", temp->key);
     printf("n: %d time: %.6f \n ", n, time_bin);
-    fprintf(f2, "n: %d time: %f \n", n, time_bin);
+    fprintf(f2, "n: %d time: %f \n", n, time_bin);*/
 
+
+uint32_t rez = jenkins_one_at_a_time_hash("key", 3);
 
 fclose (f);
 fclose (f2);
