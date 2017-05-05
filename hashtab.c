@@ -79,11 +79,21 @@ unsigned int hashtab_djb_hash(char *key)
     unsigned int hash = 5381;
     int c;
 
-    while (c = *key++)
-        hash = ((hash << 5) + hash) + c;
 
-    return hash % HASH_SIZE;
-}
+uint32_t jenkins_hash(char *key, size_t len)
+{
+	uint32_t hash, i;
+	for (hash = i = 0; i < len; ++i) {
+		hash += key[i];
+		hash += (hash << 10);
+		hash ^= (hash >> 6);
+	}
+	hash += (hash << 3);
+	hash ^= (hash >> 11);
+	hash += (hash << 15);
+	return hash % HASHTAB_SIZE;
+} 
+
 
 
 void hashtab_djb_add(struct table **hashtab, char *key, int value)
