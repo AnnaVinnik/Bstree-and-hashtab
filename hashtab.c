@@ -6,7 +6,7 @@
 #include "hashtab.h"
 
 #define HASH_MUL 100
-#define HASH_SIZE 300
+#define HASH_SIZE 5000
 
 unsigned int hashtab_hash(char *key)
 {
