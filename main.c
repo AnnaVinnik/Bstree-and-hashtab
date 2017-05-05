@@ -7,6 +7,7 @@
 #include <locale.h>
 #include <sys/time.h>
 #include "inttypes.h"
+#define n 600
 
 int getrand(int min, int max)
 {
@@ -24,9 +25,10 @@ double wtime()
 int main()
 {
 uint32_t ex6;
-int i, w, n = 50000;
+int i, w;
+unsigned int len;
 double time_bin, time_hash, t;
-char k[n][30], b;
+char k[n][30] = {}, b;
 
 
 FILE *f, *f2;
@@ -53,11 +55,12 @@ FILE *f, *f2;
     time_bin = wtime() - time_bin;*/
 
 //Заполнение хеш-таблицы
-   /*struct table *hashtab[n];
+
+   struct table *hashtab[500];
 
     hashtab_init(hashtab);
 
-    for (i = 0; i < n; i++)
+    /*for (i = 0; i < n; i++)
     hashtab_add(hashtab, k[i], i);
 
 
@@ -73,11 +76,21 @@ printf("%s \n", temp->key);
     printf("n: %d time: %.6f \n ", n, time_bin);
     fprintf(f2, "n: %d time: %f \n", n, time_bin);*/
 
+   // w = getrand(1, 100);
 
-uint32_t rez = jenkins_one_at_a_time_hash("key", 3);
+    for (i = 0; i < n; i++){
+        hashtab_djb_add(hashtab, k[i], i);
+    }
+int j = 15;
+printf("k[0] %s \n", k[j]);
+struct table *lookup = hashtab_djb_lookup(hashtab, k[j]);
+printf("main: key %s ,  value %d \n", lookup->key, lookup->value);
+
+
 
 fclose (f);
 fclose (f2);
 
-return 0;
+   return 0;
+
 }
