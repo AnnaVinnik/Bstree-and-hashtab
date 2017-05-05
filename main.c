@@ -7,7 +7,7 @@
 #include <locale.h>
 #include <sys/time.h>
 #include "inttypes.h"
-#define n 600
+#define n 200
 
 int getrand(int min, int max)
 {
@@ -25,8 +25,8 @@ double wtime()
 int main()
 {
 uint32_t ex6;
-int i, w;
-unsigned int len;
+int i, j, w, collis_kp = 0, collis_djb = 0;
+unsigned int hash[n], hash_djb[n];
 double time_bin, time_hash, t;
 char k[n][30] = {}, b;
 
@@ -56,9 +56,9 @@ FILE *f, *f2;
 
 //Заполнение хеш-таблицы
 
-   struct table *hashtab[500];
+  /* struct table *hashtab[100];
 
-    hashtab_init(hashtab);
+    hashtab_init(hashtab);*/
 
     /*for (i = 0; i < n; i++)
     hashtab_add(hashtab, k[i], i);
@@ -76,17 +76,51 @@ printf("%s \n", temp->key);
     printf("n: %d time: %.6f \n ", n, time_bin);
     fprintf(f2, "n: %d time: %f \n", n, time_bin);*/
 
-   // w = getrand(1, 100);
+
+//6 эксперимент хеш таблица DJB
+  /*  w = getrand(1, 99);
 
     for (i = 0; i < n; i++){
         hashtab_djb_add(hashtab, k[i], i);
     }
-int j = 15;
-printf("k[0] %s \n", k[j]);
-struct table *lookup = hashtab_djb_lookup(hashtab, k[j]);
-printf("main: key %s ,  value %d \n", lookup->key, lookup->value);
 
 
+printf("k[w] %s \n", k[w]);
+struct table *lookup = hashtab_djb_lookup(hashtab, k[w]);
+printf("main: key %s ,  value %d \n", lookup->key, lookup->value);*/
+
+//Collision KP
+for (i = 0; i < n; i++){
+    hash[i] = hashtab_hash(k[i]);
+}
+
+
+for (i = 0; i < n; i++){
+    for (j = 0; j < i; j ++){
+        if (hash[i] == hash[j]){
+            collis_kp = collis_kp + 1;
+            break;
+        }     
+    }
+}
+
+   printf("Collision in kp: %d \n", collis_kp); 
+
+//Collision DJB
+for (i = 0; i < n; i++){
+    hash_djb[i] = hashtab_djb_hash(k[i]);
+}
+
+
+for (i = 0; i < n; i++){
+    for (j = 0; j < i; j++){
+        if (hash_djb[i] == hash_djb[j]){
+            collis_djb = collis_djb + 1;
+            break;
+        }
+    }
+}
+   printf("Collision in DJB: %d \n", collis_djb); 
 
 fclose (f);
 fclose (f2);

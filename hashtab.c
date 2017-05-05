@@ -5,8 +5,8 @@
 #include "inttypes.h"
 #include "hashtab.h"
 
-#define HASH_MUL 200
-#define HASH_SIZE 600
+#define HASH_MUL 100
+#define HASH_SIZE 300
 
 unsigned int hashtab_hash(char *key)
 {
@@ -105,13 +105,9 @@ struct table *hashtab_djb_lookup(struct table **hashtab, char *key)
     struct table *node;
 
     index = hashtab_djb_hash(key);
-    node = hashtab[index];/*; node != NULL; node = node->next){
-        if (strcmp(node->key, key) == 0)*/
-    printf("lookup: index %d value %d \n", index, hashtab[index]->value);
+    node = hashtab[index];
 
     return node;
-    // }
-    //return NULL;
 }
 
 
