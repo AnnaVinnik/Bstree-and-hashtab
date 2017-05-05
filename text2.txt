@@ -50,3 +50,36 @@ n: 35000 time: 0.000000
 n: 40000 time: 0.000000 
 n: 45000 time: 0.000000 
 n: 50000 time: 0.000000 
+
+Эксперимент 6
+
+Time of lookup KP for 5000 = 0.000001; 	DJB for 5000 = 0.000000 
+Collision in kp: 3185; 	in DJB: 2999 
+
+Time of lookup KP for 10000 = 0.000007; 	DJB for 10000 = 0.000000 
+Collision in kp: 7366; 	in DJB: 7089 
+
+Time of lookup KP for 15000 = 0.000002; 	DJB for 15000 = 0.000001 
+Collision in kp: 11782; 	in DJB: 11427 
+
+Time of lookup KP for 20000 = 0.000009; 	DJB for 20000 = 0.000001 
+Collision in kp: 16438; 	in DJB: 16087 
+
+Time of lookup KP for 25000 = 0.000009; 	DJB for 25000 = 0.000000 
+Collision in kp: 21148; 	in DJB: 20783 
+
+Time of lookup KP for 30000 = 0.000009; 	DJB for 30000 = 0.000001 
+Collision in kp: 25999; 	in DJB: 25610 
+
+Time of lookup KP for 35000 = 0.000003; 	DJB for 35000 = 0.000000 
+Collision in kp: 30815; 	in DJB: 30445 
+
+Time of lookup KP for 40000 = 0.000010; 	DJB for 40000 = 0.000000 
+Collision in kp: 35700; 	in DJB: 35349 
+
+Time of lookup KP for 45000 = 0.000002; 	DJB for 45000 = 0.000001 
+Collision in kp: 40579; 	in DJB: 40256 
+
+Time of lookup KP for 50000 = 0.000010; 	DJB for 50000 = 0.000001 
+Collision in kp: 45483; 	in DJB: 45179 
+
